@@ -1,14 +1,27 @@
 {
     "name": "journify-proxy",
+    "env": {
+        "BASE_DOMAINE": {
+            "description": "Specify your base domain",
+            "required": true,
+            "order" : 100
+        },
+        "SUB_DOMAINE": {
+            "description": "Specify your sub domain",
+            "required": true,
+            "order" : 101
+        }
+    },
     "hooks": {
         "prebuild": {
             "commands": [
+                "gcloud domains verify $BASE_DOMAINE",
                 "gcloud auth configure-docker"
             ]
         },
         "postcreate":{
             "commands": [
-                "gcloud beta run domain-mappings create --service $K_SERVICE --domain proxy.journify-stage.dev --region $GOOGLE_CLOUD_REGION --project $GOOGLE_CLOUD_PROJECT"
+                "gcloud beta run domain-mappings create --service $K_SERVICE --domain $SUB_DOMAINE --region $GOOGLE_CLOUD_REGION --project $GOOGLE_CLOUD_PROJECT"
             ]
         }
     }
