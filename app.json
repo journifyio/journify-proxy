@@ -3,7 +3,7 @@
     "hooks": {
         "prebuild": {
             "commands": [
-                "gcloud auth configure-docker us-docker.pkg.dev"
+                "gcloud auth configure-docker"
             ]
         },
         "postcreate":{
