@@ -8,7 +8,6 @@
         },
         "postcreate":{
             "commands": [
-                "gcloud domains verify journify-stage.dev",
                 "gcloud beta run domain-mappings create --service $SERVICE_URL --domain proxy.journify-stage.dev"
             ]
         }
