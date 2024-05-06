@@ -6,10 +6,10 @@
                 "gcloud auth configure-docker us-east1-docker.pkg.dev"
             ]
         },
-        "postbuild":{
+        "postcreate":{
             "commands": [
                 "gcloud domains verify journify-stage.dev",
-                "gcloud beta run domain-mappings create --service journify-proxy --domain journify-stage.dev"
+                "gcloud beta run domain-mappings create --service $SERVICE_URL --domain proxy.journify-stage.dev"
             ]
         }
     }
