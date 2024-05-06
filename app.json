@@ -3,7 +3,13 @@
     "hooks": {
         "prebuild": {
             "commands": [
-                "gcloud auth configure-docker"
+                "gcloud auth configure-docker us-east1-docker.pkg.dev"
+            ]
+        },
+        "postbuild":{
+            "commands": [
+                "gcloud domains verify journify-stage.dev",
+                "gcloud beta run domain-mappings create --service journify-proxy --domain journify-stage.dev"
             ]
         }
     }
