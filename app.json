@@ -16,6 +16,7 @@
         "prebuild": {
             "commands": [
                 "gcloud domains verify $BASE_DOMAINE",
+                "sleep 30",
                 "gcloud auth configure-docker"
             ]
         },
