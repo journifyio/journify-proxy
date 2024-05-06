@@ -1,0 +1,10 @@
+{
+    "name": "journify-proxy",
+    "hooks": {
+        "prebuild": {
+            "commands": [
+                "gcloud auth configure-docker"
+            ]
+        }
+    }
+}

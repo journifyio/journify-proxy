@@ -31,21 +31,6 @@ func singleJoiningSlash(a, b string) string {
 // the destination URL.
 func NewReverseProxy(trackingAPI *url.URL) http.Handler {
 	director := func(req *http.Request) {
-		// Figure out which server to redirect to based on the incoming request.
-		//var target *url.URL
-		//switch {
-		//case strings.HasPrefix(req.URL.String(), "/v1/projects"):
-		//	fallthrough
-		//case strings.HasPrefix(req.URL.String(), "/analytics.js/v1"):
-		//	fallthrough
-		//case strings.HasPrefix(req.URL.String(), "/next-integrations"):
-		//	fallthrough
-		//case strings.HasPrefix(req.URL.String(), "/analytics-next/bundles"):
-		//	target = cdn
-		//default:
-		//	target = trackingAPI
-		//}
-
 		targetQuery := trackingAPI.RawQuery
 		req.URL.Scheme = trackingAPI.Scheme
 		req.URL.Host = trackingAPI.Host
@@ -68,10 +53,6 @@ var debug = flag.Bool("debug", false, "debug mode")
 
 func main() {
 	flag.Parse()
-	//cdnURL, err := url.Parse("https://cdn.journify.io")
-	//if err != nil {
-	//	log.Fatal(err)
-	//}
 	trackingAPIURL, err := url.Parse("https://t.journify.io/")
 	if err != nil {
 		log.Fatal(err)
