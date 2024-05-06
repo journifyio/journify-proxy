@@ -4,12 +4,12 @@
         "BASE_DOMAINE": {
             "description": "Specify your base domain",
             "required": true,
-            "order" : 100
+            "order" : 1
         },
         "SUB_DOMAINE": {
             "description": "Specify your sub domain",
             "required": true,
-            "order" : 101
+            "order" : 2
         }
     },
     "hooks": {
